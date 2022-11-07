@@ -5,10 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Temperament', { 
 		id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false,
       unique: true,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4
     },
 		name: {
 			type: DataTypes.INTEGER

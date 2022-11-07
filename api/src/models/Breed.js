@@ -5,10 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Breed', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       unique: true,
       primaryKey: true,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
@@ -16,11 +17,11 @@ module.exports = (sequelize) => {
       unique: true,
     },
     height: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     weight: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     life_span: {
