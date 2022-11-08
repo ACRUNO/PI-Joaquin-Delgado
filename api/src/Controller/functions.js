@@ -1,17 +1,21 @@
 const { Breed, Temperament } = require("../db")
 const axios = require("axios")
 const { Op } = require('sequelize');
+const { API_KEY } = process.env
 
 const getBreedsApi = async () => {
     try {
-        const response = await axios.get('https://api.thedogapi.com/v1/breeds');
+        const response = await axios.get(`https://api.thedogapi.com/v1/breeds?x-api-key=${API_KEY}`);
         const apiBreeds = response.data.map(b => {
             return {
                 id: b.id,
                 name: b.name,
-                height: b.height.metric,
-                weight: b.weight.metric,
+                weight_min: parseInt(b.weight.metric.slice(0,2).trim()),
+                weight_max: parseInt(b.weight.metric.slice(-2).trim()),
+                height_min: parseInt(b.height.metric.slice(0,2).trim()),
+                height_max: parseInt(b.height.metric.slice(-2).trim()),
                 life_span: b.life_span,
+                temperament: b.temperament?.split(', '),
                 img: b.image.url
             }
         })
@@ -22,12 +26,19 @@ const getBreedsApi = async () => {
 }
 
 const getBreedsDb = async () => {
-    let breedsDb = await Breed.findAll();
+    let breedsDb = await Breed.findAll({
+        include: {
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            }
+        }
+    });
     return breedsDb;
 }
 
 const getBreedByName = async (name) => {
-        
         const breed = await Breed.findOne({
             where: {
                 name: name
@@ -35,15 +46,18 @@ const getBreedByName = async (name) => {
         })
         if(breed){ return breed }
         
-        const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}`);
+        const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&x-api-key=${API_KEY}`);
         if (response.data.length > 0) {
         const breed = response.data.map(b => {
             return {
                 id: b.id,
                 name: b.name,
-                height: b.height.metric,
-                weight: b.weight.metric,
+                weight_min: parseInt(b.weight.metric.slice(0,2).trim()),
+                weight_max: parseInt(b.weight.metric.slice(-2).trim()),
+                height_min: parseInt(b.height.metric.slice(0,2).trim()),
+                height_max: parseInt(b.height.metric.slice(-2).trim()),
                 life_span: b.life_span,
+                temperament: b.temperament?.split(', '),
                 img: b.reference_image_id
             }
         }) 
@@ -57,29 +71,33 @@ const getBreedByName = async (name) => {
 const getBreedId = async (id) => {
     if (id.length === 36){
         const breed = await Breed.findOne({
+            include: Temperament,
             where: {
                 id: id
             }
         })
         return breed;
     }
-    const response = await axios.get('https://api.thedogapi.com/v1/breeds');
+    const response = await axios.get(`https://api.thedogapi.com/v1/breeds?x-api-key=${API_KEY}`);
 
     let breed = response.data.filter(b => b.id === parseInt(id)); 
     if (breed.length === 0) throw new Error('Breed does not exist!')
     breed = {
         id: breed[0].id,
         name: breed[0].name,
-        height: breed[0].height.metric,
-        weight: breed[0].weight.metric,
+        weight_min: parseInt(breed[0].weight.metric.slice(0,2).trim()),
+        weight_max: parseInt(breed[0].weight.metric.slice(-2).trim()),
+        height_min: parseInt(breed[0].height.metric.slice(0,2).trim()),
+        height_max: parseInt(breed[0].height.metric.slice(-2).trim()),
         life_span: breed[0].life_span,
+        temperament: breed[0].temperament?.split(', '),
         img: breed[0].image.url
     }
     return breed;
 }
 
 const getTemperaments = async () => {
-    const response = await axios.get('https://api.thedogapi.com/v1/breeds');
+    const response = await axios.get(`https://api.thedogapi.com/v1/breeds?x-api-key=${API_KEY}`);
     let allTemperaments = [];
     response.data.forEach(t => {
         if (t.temperament){

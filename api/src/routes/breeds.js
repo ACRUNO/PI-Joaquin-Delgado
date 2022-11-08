@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Breed } = require('../db.js');
+const { Breed, Temperament } = require('../db.js');
 const router = Router();
 const { getBreedByName, getBreedsApi, getBreedId, getBreedsDb } = require('../Controller/functions.js');
 
@@ -35,16 +35,28 @@ router.get('/:id', async(req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { id, name, height, weight, life_span, img } = req.body;
-        if (!name || !height || !weight) throw new Error('Missing data!');
+        const { id, name, height_min, height_max, weight_min, weight_max, life_span, img, temperament } = req.body;
+        if (!name || !height_min || !height_max || !weight_min || !weight_max) throw new Error('Missing data!');
         const newBreed = await Breed.create({
             id,
             name,
-            height,
-            weight,
+            height_min,
+            height_max,
+            weight_min,
+            weight_max,
             life_span, 
             img
         })
+
+        temperament.split(', ').map(async t => {
+            const newTemperament = await Temperament.findAll({
+                where: {
+                    name: t
+                }
+            });
+            newBreed.addTemperament(newTemperament);
+        })
+        
         res.status(201).send(newBreed);
     } catch (error) {
         res.status(400).send(error.message);
