@@ -28,7 +28,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     img: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      defaultValue: 'https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170119_1200.jpg'
     }
   }, {
     timestamps: false
