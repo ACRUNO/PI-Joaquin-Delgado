@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         let allTemperaments = await Temperament.findAll()
         if (allTemperaments.length === 0){
             let gettingTemperaments = await getTemperaments();
-            console.log(gettingTemperaments);
+            // console.log(gettingTemperaments);
             await Temperament.bulkCreate(gettingTemperaments);
         }
         allTemperaments = await Temperament.findAll()

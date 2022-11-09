@@ -25,6 +25,7 @@ const getBreedsApi = async () => {
     }
 }
 
+
 const getBreedsDb = async () => {
     let breedsDb = await Breed.findAll({
         include: {

@@ -29,7 +29,7 @@ router.get('/:id', async(req, res) => {
         const breed = await getBreedId(id);
         return res.status(200).send(breed);
     } catch (error) {
-        res.status(400).send(error.message);
+        return res.status(400).send(error.message);
     }
 })
 
