@@ -1,12 +1,17 @@
 import React from "react"
-import { Link } from "react-router-dom/cjs/react-router-dom"
+import { Link } from "react-router-dom/cjs/react-router-dom";
+import './Landing.css';
 
 
 
 export default function Landing(){
     return (
-    <Link to='/dogs'>
-        <button>Henry Dogs</button>
-    </Link>
+    <div className="page">
+        <div className="loader">
+            <Link to='/dogs'>
+                <button className="button">Welcome to Henry Dogs!</button>
+            </Link>
+        </div>
+    </div>
     )
 }
