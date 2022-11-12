@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { getAllBreeds } from "../../actions";
 import BreedCards from '../BreedCards/BreedCards.jsx'
-
+import './Home.css';
 
 
 export default function Breeds(props){
@@ -18,7 +18,7 @@ export default function Breeds(props){
 
     console.log(breeds)
     return (
-        <div>
+        <div className="cards">
         {breeds?.map(b=>{
             return (
                 <Link to={`/dogs/${b.id}`}>
