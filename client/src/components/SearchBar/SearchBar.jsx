@@ -7,10 +7,10 @@ export default function SearchBar(){
     const dispatch = useDispatch();
     const [name, setName] = useState('');
 
-    const handleChange = (value) => {
-        // value.preventDefault();
-        setName(value);
-        dispatch(searchBreed(value));
+    const handleChange = (e) => {
+        e.preventDefault();
+        setName(e.target.value);
+        dispatch(searchBreed(e.target.value));
         dispatch(setCurrentPage(1))
     }
 
@@ -21,7 +21,7 @@ export default function SearchBar(){
 
     return(
         <div>
-            <input type="text" placeholder="Breed..." onChange={e => handleChange(e.target.value)}></input>
+            <input type="text" placeholder="Breed..." onChange={e => handleChange(e)}></input>
             {/* <button onClick={()=> handleSubmit(name)}>Search</button> */}
         </div>
     )

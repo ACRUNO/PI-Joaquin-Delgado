@@ -45,13 +45,11 @@ export const setCurrentPage = (page) => dispatch => {
 export const searchBreed = (name) => async dispatch  => {
     try {
         let breed = await axios.get(`http://localhost:3001/dogs?name=${name}`);
-        console.log(breed.data)
         return dispatch({
             type: SEARCH_BREED,
             payload: breed.data
         })
     } catch (error) {
-        console.log(error.message)
         return dispatch({
             type: SEARCH_BREED,
             payload: []

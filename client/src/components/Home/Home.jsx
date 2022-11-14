@@ -7,6 +7,7 @@ import BreedCards from '../BreedCards/BreedCards.jsx'
 import Pagination from "../Pagination/Pagination";
 import Nav from "../NavBar/NavBar.jsx";
 import './Home.css';
+import Filters from "../Filters/Filters";
 
 
 export default function Breeds(props){
@@ -39,6 +40,7 @@ export default function Breeds(props){
         <div className="cards">
             <Nav />
             <Pagination perPage = {perPage} totalBreeds = {allBreeds.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
+            <Filters />
             {breeds?.map(b=>{
                 return (
                     <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
