@@ -1,22 +1,24 @@
 import React from "react";
 
-export default function Pagination({perPage, totalBreeds, paginate}) {
+export default function Pagination({perPage, totalBreeds, paginate, previousPaginate, nextPaginate}) {
 
     const pageNumbers = [];
 
-    for(let i=1; i <= Math.ceil(totalBreeds/perPage); i++){
+    for(let i=1 ; i <= Math.ceil(totalBreeds/perPage); i++){
         pageNumbers.push(i);
     }
 
     return (
         <div>
             <ul>
-                {pageNumbers.map(n =>(
-                    <li>
+                <li>
+                    <button onClick={() => previousPaginate()}>Prev</button>
+                    {pageNumbers.map(n =>(
                         <button onClick={() => paginate(n)}>{n}</button>    
-                    </li>
-                )
-                )}
+                        )
+                    )}
+                    <button onClick={() => nextPaginate()}>Next</button>
+                </li>
             </ul>
         </div>
     )

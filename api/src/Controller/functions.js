@@ -47,8 +47,27 @@ const getBreedByName = async (name) => {
         })
         if(breed){ return breed }
         
-        const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&x-api-key=${API_KEY}`);
-        if (response.data.length > 0) {
+        // const response = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}&x-api-key=${API_KEY}`);
+        const response = await axios.get(`https://api.thedogapi.com/v1/breeds?x-api-key=${API_KEY}`);
+        const breeds = response.data.filter(d => d.name.toLowerCase().includes(name.toLowerCase()) )
+        if (breeds.length > 0){
+            const breed = breeds.map(b => {
+                return {
+                    id: b.id,
+                    name: b.name,
+                    weight_min: parseInt(b.weight.metric.slice(0,2).trim()),
+                    weight_max: parseInt(b.weight.metric.slice(-2).trim()),
+                    height_min: parseInt(b.height.metric.slice(0,2).trim()),
+                    height_max: parseInt(b.height.metric.slice(-2).trim()),
+                    life_span: b.life_span,
+                    temperament: b.temperament?.split(', '),
+                    img: b.image.url
+                }
+            }) 
+            return breed;
+        }
+
+/*      if (response.data.length > 0) {
         const breed = response.data.map(b => {
             return {
                 id: b.id,
@@ -63,7 +82,7 @@ const getBreedByName = async (name) => {
             }
         }) 
         return breed;
-        }
+        } */
 
         throw new Error('Breed does not exist!')
 }
