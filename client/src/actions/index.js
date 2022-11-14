@@ -4,6 +4,7 @@ export const GET_ALL_BREEDS = "GET_ALL_BREEDS";
 export const GET_BREED_DETAILS = "GET_BREED_DETAILS";
 export const CREATE_BREED = "CREATE_BREED";
 export const DELETE_BREED = "DELETE_BREED";
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 
 
 
@@ -30,5 +31,12 @@ export const getBreedDetails = (id) => async dispatch => {
         })
     } catch (error) {
         alert(error);
+    }
+}
+
+export const setCurrentPage = (page) => {
+    return {
+        type: SET_CURRENT_PAGE,
+        payload: page
     }
 }

@@ -1,9 +1,10 @@
-import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, DELETE_BREED } from "../actions/index.js";
+import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, DELETE_BREED, SET_CURRENT_PAGE } from "../actions/index.js";
 
 const initialState = {
     breeds: [],
     temperaments: [],
-    breedDetail: {}
+    breedDetail: {},
+    page: 1
 }
 
 
@@ -14,6 +15,10 @@ function rootReducer(state = initialState, action) {
         
         case GET_BREED_DETAILS:
             return {...state, breedDetail: action.payload}
+        
+        case SET_CURRENT_PAGE:
+            return {...state, page: action.payload}
+        
 
         default: return { ...state }
     }

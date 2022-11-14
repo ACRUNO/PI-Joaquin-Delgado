@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getBreedDetails } from "../../actions";
 
 
@@ -20,7 +20,9 @@ export default function BreedDetails(props) {
 
     return (
         <div>
+            <Link to={`/dogs`}>
             <button>Back</button>
+            </Link>
             <h1>BREED: {breedDetail.name}</h1>
             <img src={breedDetail.img}/>
             <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
