@@ -1,22 +1,21 @@
 const { Router } = require('express');
 const { Breed, Temperament } = require('../db.js');
 const router = Router();
-const { getBreedByName, getBreedsApi, getBreedId, getBreedsDb } = require('../Controller/functions.js');
+const { getBreedByName, getBreedId, getAllBreeds } = require('../Controller/functions.js');
 
 
 router.get('/', async(req, res) => {
     try {
         const { name } = req.query;
-        
+        const breeds = await getAllBreeds();
+
         if (name){
-            const breeds = await getBreedByName(name);
-            return res.status(200).send(breeds);
-        }else {
-            const breedsApi = await getBreedsApi();
-            const breedsDb = await getBreedsDb();
-            const breeds = [...breedsApi, ...breedsDb];
-            return res.status(200).send(breeds);
+            const breedsFiltered = getBreedByName(name, breeds);
+            return res.status(200).send(breedsFiltered);
         }
+            
+            return res.status(200).send(breeds);
+        
         
     } catch (error) {
         res.status(400).send(error.message);
@@ -26,7 +25,9 @@ router.get('/', async(req, res) => {
 router.get('/:id', async(req, res) => {
     try {
         const { id } = req.params;
-        const breed = await getBreedId(id);
+        const breeds = await getAllBreeds();
+
+        const breed = await getBreedId(id, breeds);
         return res.status(200).send(breed);
     } catch (error) {
         return res.status(400).send(error.message);

@@ -19,7 +19,7 @@ export default function Breeds(props){
     const lastBreed = currentPage * perPage;
     const firstBreed = lastBreed - perPage;
     
-    const breeds = allBreeds.slice(firstBreed, lastBreed);
+    const breeds = allBreeds && allBreeds.slice(firstBreed, lastBreed);
 
     useEffect(() => {
         dispatch(getAllBreeds())
@@ -41,7 +41,7 @@ export default function Breeds(props){
             <Nav />
             <Pagination perPage = {perPage} totalBreeds = {allBreeds.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
             <Filters />
-            {breeds?.map(b=>{
+            {breeds && breeds.map(b=>{
                 return (
                     <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
                         <BreedCards 

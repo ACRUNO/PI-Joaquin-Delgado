@@ -17,7 +17,7 @@ export default function BreedDetails(props) {
     useEffect(()=>{
         dispatch(getBreedDetails(id))
     }, []);
-
+    console.log(breedDetail);
     return (
         <div>
             <Link to={`/dogs`}>
