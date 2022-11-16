@@ -14,7 +14,7 @@ export default function BreedDetails(props) {
 
     const { id } = useParams();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getBreedDetails(id))
     }, []);
     console.log(breedDetail);
@@ -24,7 +24,7 @@ export default function BreedDetails(props) {
             <button>Back</button>
             </Link>
             <h1>BREED: {breedDetail.name}</h1>
-            <img src={breedDetail.img}/>
+            <img src={breedDetail.img} alt=""/>
             <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
             <p>LIFE SPAN: {breedDetail.life_span}</p>
             <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>

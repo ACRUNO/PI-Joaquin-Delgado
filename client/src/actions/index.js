@@ -9,13 +9,14 @@ export const SEARCH_BREED = "SEARCH_BREED";
 export const ORDER_FILTER = "ORDER_FILTER";
 export const ORDER_WEIGHT_FILTER = "ORDER_WEIGHT_FILTER";
 export const CREATION_FILTER = "CREATION_FILTER";
+export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
+export const TEMPERAMENTS_FILTER = "TEMPERAMENTS_FILTER";
 
 
 
 export const getAllBreeds = () => { return async dispatch => {
     try {
         let breeds = await axios.get("http://localhost:3001/dogs");
-        console.log(breeds.data);
         return dispatch({
             type: GET_ALL_BREEDS,
             payload: breeds.data
@@ -25,6 +26,20 @@ export const getAllBreeds = () => { return async dispatch => {
     }
     }
 }
+
+export const getAllTemperaments = () => async dispatch => {
+    try {
+        let allTemperaments = await axios.get("http://localhost:3001/temperaments");
+        return dispatch({
+            type: GET_ALL_TEMPERAMENTS,
+            payload: allTemperaments.data
+        })
+    } catch (error) {
+        alert(error);
+    }
+}
+
+
 
 export const getBreedDetails = (id) => async dispatch => {
     try {
@@ -79,6 +94,13 @@ export const orderWeightFilter = value => {
 export const creationFilter = value => {
     return {
         type: CREATION_FILTER,
+        payload: value
+    }
+}
+
+export const temperamentsFilter = value => {
+    return {
+        type: TEMPERAMENTS_FILTER,
         payload: value
     }
 }

@@ -1,4 +1,4 @@
-import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, DELETE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER } from "../actions/index.js";
+import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, DELETE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER } from "../actions/index.js";
 
 const initialState = {
     allBreeds: [],
@@ -23,8 +23,11 @@ function rootReducer(state = initialState, action) {
         case SEARCH_BREED: 
             return {...state, breeds: action.payload}
 
+        case GET_ALL_TEMPERAMENTS: 
+            return {...state, temperaments: action.payload}
+
         case ORDER_FILTER:
-            let sorted = [...state.allBreeds];
+            let sorted = [...state.breeds];
             console.log(sorted);
             sorted = sorted.sort((a , b) => {
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return action.payload === "A - Z" ? 1 : -1;
@@ -34,7 +37,7 @@ function rootReducer(state = initialState, action) {
             return {...state, breeds: sorted}
         
         case ORDER_WEIGHT_FILTER:
-            let weight_sorted = [...state.allBreeds];
+            let weight_sorted = [...state.breeds];
 
             weight_sorted = weight_sorted.sort((a , b) => {
                 if(a.weight_max > b.weight_max) return action.payload === "Less" ? 1 : -1;
@@ -51,10 +54,14 @@ function rootReducer(state = initialState, action) {
             // creation_filter = action.payload === "Existing" && allBreeds.filter(c => c.id.toString().length < 36 );
             if (action.payload === "Existing") creation_filter = allBreeds.filter(c => c.id.toString().length < 36 );
             // creation_filter = action.payload === "All" && allBreeds;
-            if (action.payload === "All") creation_filter = allBreeds;
-            console.log(creation_filter);
-
+            if (action.payload === "All Breeds") creation_filter = [...state.allBreeds];
             return {...state, breeds: creation_filter}
+
+        case TEMPERAMENTS_FILTER:
+            let allTemperamentsBreeds = [...state.allBreeds];
+            if (action.payload === "All Temperaments") return {...state, breeds: allTemperamentsBreeds}
+            let filteredTemperaments = allTemperamentsBreeds.filter(b => b.temperament?.includes(action.payload));
+            return {...state, breeds: filteredTemperaments}
 
         default: return { ...state }
     }

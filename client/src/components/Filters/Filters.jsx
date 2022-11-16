@@ -1,11 +1,12 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { creationFilter, orderFilter, orderWeightFilter, setCurrentPage } from "../../actions";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { creationFilter, getAllTemperaments, orderFilter, orderWeightFilter, setCurrentPage, temperamentsFilter } from "../../actions";
 
 
 export default function Filters(){
 
     const dispatch = useDispatch();
+    const allTemperaments = useSelector(state => state.temperaments)
 
     const handleOrderFilter= e =>{
         dispatch(orderFilter(e.target.value));
@@ -19,6 +20,15 @@ export default function Filters(){
         dispatch(setCurrentPage(1))
         dispatch(creationFilter(e.target.value));
     }
+
+    const handleTemperamentsFilter = e => {
+        dispatch(setCurrentPage(1));
+        dispatch(temperamentsFilter(e.target.value));
+    }
+
+    useEffect(() => {
+        dispatch(getAllTemperaments())
+    }, []);
 
     return(
         <div>
@@ -36,9 +46,18 @@ export default function Filters(){
                 </select>
 
                 <select onChange={(e) => createdBreeds(e)}>
-                    <option>All</option>
+                    <option>All Breeds</option>
                     <option>Created</option>
                     <option>Existing</option>
+                </select>
+
+                <select onChange={e => handleTemperamentsFilter(e)}>
+                    <option>All Temperaments</option>
+                    {allTemperaments?.map(t => {
+                        return (
+                            <option>{t.name}</option>
+                        )
+                    })}
                 </select>
             </div>
         </div>

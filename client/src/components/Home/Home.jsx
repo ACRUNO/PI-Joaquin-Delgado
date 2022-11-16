@@ -19,7 +19,7 @@ export default function Breeds(props){
     const lastBreed = currentPage * perPage;
     const firstBreed = lastBreed - perPage;
     
-    const breeds = allBreeds && allBreeds.slice(firstBreed, lastBreed);
+    const breeds = allBreeds && allBreeds?.slice(firstBreed, lastBreed);
 
     useEffect(() => {
         dispatch(getAllBreeds())
@@ -32,14 +32,14 @@ export default function Breeds(props){
         }
     }
     const nextPaginate = () => {
-        if (currentPage < allBreeds.length/perPage){    
+        if (currentPage < allBreeds?.length/perPage){    
         dispatch(setCurrentPage(currentPage+1))
         }
     }
     return (
         <div className="cards">
             <Nav />
-            <Pagination perPage = {perPage} totalBreeds = {allBreeds.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
+            <Pagination perPage = {perPage} totalBreeds = {allBreeds?.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
             <Filters />
             {breeds && breeds.map(b=>{
                 return (
