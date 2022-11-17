@@ -28,6 +28,7 @@ export default function Filters(){
 
     useEffect(() => {
         dispatch(getAllTemperaments())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return(
@@ -55,7 +56,7 @@ export default function Filters(){
                     <option>All Temperaments</option>
                     {allTemperaments?.map(t => {
                         return (
-                            <option>{t.name}</option>
+                            <option value={t.name}>{t.name}</option>
                         )
                     })}
                 </select>

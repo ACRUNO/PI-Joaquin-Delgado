@@ -16,6 +16,7 @@ export default function BreedDetails(props) {
 
     useEffect(() => {
         dispatch(getBreedDetails(id))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     console.log(breedDetail);
     return (

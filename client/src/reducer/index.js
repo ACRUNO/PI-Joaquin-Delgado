@@ -1,4 +1,4 @@
-import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, DELETE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER } from "../actions/index.js";
+import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER } from "../actions/index.js";
 
 const initialState = {
     allBreeds: [],
@@ -26,13 +26,16 @@ function rootReducer(state = initialState, action) {
         case GET_ALL_TEMPERAMENTS: 
             return {...state, temperaments: action.payload}
 
+        case CREATE_BREED:
+            return {...state}
+
         case ORDER_FILTER:
             let sorted = [...state.breeds];
             console.log(sorted);
             sorted = sorted.sort((a , b) => {
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return action.payload === "A - Z" ? 1 : -1;
                 if(a.name.toLowerCase() < b.name.toLowerCase()) return action.payload === "Z - A" ? 1 : -1;
-                
+                return -1
             })
             return {...state, breeds: sorted}
         
@@ -42,7 +45,7 @@ function rootReducer(state = initialState, action) {
             weight_sorted = weight_sorted.sort((a , b) => {
                 if(a.weight_max > b.weight_max) return action.payload === "Less" ? 1 : -1;
                 if(a.weight_max < b.weight_max) return action.payload === "More" ? 1 : -1;
-                
+                return -1;
             })
             return {...state, breeds: weight_sorted}
 

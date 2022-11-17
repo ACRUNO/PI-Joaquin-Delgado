@@ -36,8 +36,9 @@ router.get('/:id', async(req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { id, name, height_min, height_max, weight_min, weight_max, life_span, img, temperament } = req.body;
+        let { id, name, height_min, height_max, weight_min, weight_max, life_span, img, temperament } = req.body;
         if (!name || !height_min || !height_max || !weight_min || !weight_max) throw new Error('Missing data!');
+        if(!img) img = 'https://img.europapress.es/fotoweb/fotonoticia_20170622121827-17062170119_1200.jpg';
         const newBreed = await Breed.create({
             id,
             name,
@@ -49,7 +50,7 @@ router.post('/', async (req, res) => {
             img
         })
 
-        temperament.split(', ').map(async t => {
+        temperament.map(async t => {
             const newTemperament = await Temperament.findAll({
                 where: {
                     name: t

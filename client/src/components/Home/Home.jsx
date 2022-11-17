@@ -23,6 +23,7 @@ export default function Breeds(props){
 
     useEffect(() => {
         dispatch(getAllBreeds())
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const paginate = page => dispatch(setCurrentPage(page));

@@ -38,13 +38,13 @@ const getBreedsDb = async () => {
 
     const breedsDb = breeds?.map(b => {
         const { Temperaments } = b;
-        console.log(Temperaments);
         const breedsData = {
             ...b.dataValues,
             temperament: Temperaments.map(t => t.name)
         }
         return breedsData
     })
+    delete breedsDb["Temperaments"];
     return breedsDb;
 }
 

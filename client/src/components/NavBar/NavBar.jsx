@@ -12,7 +12,9 @@ export default function Nav(){
             </Link>
             <SearchBar/>
 
-            <button>Creation</button>
+            <Link to = "/creation">
+                <button>Creation</button>
+            </Link>
         </div>
     )
 }

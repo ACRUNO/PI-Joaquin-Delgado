@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_ALL_BREEDS = "GET_ALL_BREEDS";
 export const GET_BREED_DETAILS = "GET_BREED_DETAILS";
 export const CREATE_BREED = "CREATE_BREED";
-export const DELETE_BREED = "DELETE_BREED";
+/* export const DELETE_BREED = "DELETE_BREED"; */
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SEARCH_BREED = "SEARCH_BREED";
 export const ORDER_FILTER = "ORDER_FILTER";
@@ -39,8 +39,6 @@ export const getAllTemperaments = () => async dispatch => {
     }
 }
 
-
-
 export const getBreedDetails = (id) => async dispatch => {
     try {
         const breed = await axios.get(`http://localhost:3001/dogs/${id}`);
@@ -75,6 +73,14 @@ export const searchBreed = (name) => async dispatch  => {
         })
     }
 }
+
+export const createBreed =  async breed => {
+    let breeds = await axios.post('http://localhost:3001/dogs', breed);
+    return {
+        type: CREATE_BREED,
+        payload: breeds
+    }
+} 
 
 
 export const orderFilter = value => {

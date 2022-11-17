@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchBreed, setCurrentPage } from "../../actions";
 
 export default function SearchBar(){
