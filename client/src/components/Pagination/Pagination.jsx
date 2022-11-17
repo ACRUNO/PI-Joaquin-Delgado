@@ -1,4 +1,5 @@
 import React from "react";
+import "./Pagination.css";
 
 export default function Pagination({perPage, totalBreeds, paginate, previousPaginate, nextPaginate}) {
 
@@ -9,15 +10,15 @@ export default function Pagination({perPage, totalBreeds, paginate, previousPagi
     }
 
     return (
-        <div>
+        <div className="pagination">
             <ul>
-                <li>
-                    <button onClick={() => previousPaginate()}>Prev</button>
+                <li className="pages">
+                    <button onClick={() => previousPaginate()}>{"<<"}</button>
                     {pageNumbers.map(n =>(
                         <button className="" onClick={() => paginate(n)}>{n}</button>    
                         )
                     )}
-                    <button onClick={() => nextPaginate()}>Next</button>
+                    <button onClick={() => nextPaginate()}>{">>"}</button>
                 </li>
             </ul>
         </div>

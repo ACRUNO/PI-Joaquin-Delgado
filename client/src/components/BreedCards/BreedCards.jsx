@@ -10,10 +10,10 @@ export default function BreedCards({name, img, weight_max, weight_min, temperame
             <h2 className="title">{name}</h2>
             <img className="img" src={img} alt=''/>
             <span>Wehight: {weight_min} - {weight_max}kg</span>
-            <ul className="temperaments">Temperaments:  
+            <ul className="temp">Temperaments:  
             {temperament?.map(t => {
                 return (
-                    <li>{t}</li>
+                    <div className="temperaments">{t}</div>
                 )
             })
             }

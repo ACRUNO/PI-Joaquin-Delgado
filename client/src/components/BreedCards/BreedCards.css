@@ -52,5 +52,5 @@
     padding-left: 3px;
     padding-right: 3px;
     list-style: none;
-    justify-content: space-around;
+    justify-content: space-evenly
   }

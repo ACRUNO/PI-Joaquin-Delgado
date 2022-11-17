@@ -37,34 +37,39 @@ export default function Breeds(props){
         }
     }
     return (
-        <div className="cards">
-            <Nav />
-            <Pagination perPage = {perPage} totalBreeds = {allBreeds?.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
-            <Filters />
-            {console.log(breeds)}
-            {breeds.length!==0 ? breeds.map(b=>{
-                return (
-                    <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
-                        <BreedCards 
-                            key = {b.id}
-                            name = {b.name}
-                            img = {b.img}
-                            weight_max = {b.weight_max}
-                            weight_min = {b.weight_min}
-                            temperament = {b.temperament}
-                        />
-                        
-                    </Link>
-                    )
-            }) : <BreedCards 
-                    key = "key"
-                    name = "Error: Breed not found!"
-                    img = "https://pbs.twimg.com/media/FNVUHJsX0AAPrqT.jpg"//"https://img.freepik.com/foto-gratis/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg"
-                    weight_max = "???"
-                    weight_min = "???"
-                    temperament = {["?","?","?"]}
-                />
-            }
+        <div className="home">
+            <div className="nav">
+                <Nav />
+            </div>
+            <div className="pag_filters">
+                <Pagination perPage = {perPage} totalBreeds = {allBreeds?.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
+                <Filters />
+            </div>
+            <div className="cards">
+                {breeds.length!==0 ? breeds.map(b=>{
+                    return (
+                        <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
+                            <BreedCards 
+                                key = {b.id}
+                                name = {b.name}
+                                img = {b.img}
+                                weight_max = {b.weight_max}
+                                weight_min = {b.weight_min}
+                                temperament = {b.temperament}
+                            />
+                            
+                        </Link>
+                        )
+                }) : <BreedCards 
+                        key = "key"
+                        name = "Error: Breed not found!"
+                        img = "https://pbs.twimg.com/media/FNVUHJsX0AAPrqT.jpg"//"https://img.freepik.com/foto-gratis/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg"
+                        weight_max = "???"
+                        weight_min = "???"
+                        temperament = {["?","?","?"]}
+                    />
+                }
+            </div>
         </div>
     )
 }
