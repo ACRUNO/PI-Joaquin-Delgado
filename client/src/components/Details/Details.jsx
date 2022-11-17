@@ -29,7 +29,7 @@ export default function BreedDetails(props) {
             <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
             <p>LIFE SPAN: {breedDetail.life_span}</p>
             <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>
-            <ul>
+            <ul>Temperaments: 
                 {breedDetail.temperament?.map(t => {
                     return ( <li>{t}</li>)
                 })}

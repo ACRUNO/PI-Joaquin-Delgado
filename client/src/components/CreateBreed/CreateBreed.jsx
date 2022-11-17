@@ -2,6 +2,38 @@ import React, { useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBreed, getAllTemperaments } from "../../actions";
 import { useHistory, Link } from "react-router-dom";
+import './CreateBreed.css';
+
+function validate(breed) {
+    let errors = {};
+    if(!breed.name || breed.name.length < 3){
+        errors.name = "Name to short";
+    }
+    if (breed.height_min < 1 || breed.height_min > 100){
+        errors.height_min = "Height min must be between 1 - 100";
+    }
+    if (breed.height_max < 1 || breed.height_max > 100){
+        errors.height_max = "Height max must be between 1 - 100";
+    }
+    if (breed.weight_min < 1 || breed.weight_min > 100){
+        errors.weight_min = "Weight min must be between 1 - 100";
+    }
+    if (breed.weight_max < 1 || breed.weight_max > 100){
+        errors.weight_max = "Weight max must be between 1 - 100";
+    }
+    if (breed.life_span < 1 || breed.life_span > 25){
+        errors.life_span = "Life span must be between 1 - 25";
+    }
+    if (breed.height_min > breed.height_max){
+        errors.height_min = "Height min can't be higher than max"
+        errors.height_max = "Height max can't be lower than min"
+    }
+    if (breed.weight_min > breed.weight_max){
+        errors.weight_min = "Weight min can't be higher than max"
+        errors.weight_max = "Weight max can't be lower than min"
+    }
+    return errors;
+}
 
 
 export default function CreateBreed() {
@@ -12,14 +44,32 @@ export default function CreateBreed() {
 
     const [breed, setBreed] = useState({
         name: "",
-        height_min: 0,
-        height_max: 0,
-        weight_min: 0,
-        weight_max: 0,
-        life_span: 0,
+        height_min: "",
+        height_max: "",
+        weight_min: "",
+        weight_max: "",
+        life_span: "",
         img: "",
         temperament: []
     })
+
+    const [errors, setErrors] = useState({})
+
+
+    let disabled =
+    !(
+        breed.name.length &&
+        breed.height_min.length &&
+        breed.height_max.length &&
+        breed.weight_min.length &&
+        breed.weight_max.length &&
+        breed.temperament.length
+    ) ||
+        breed.height_min > 100 ||
+        breed.height_max > 100 ||
+        breed.weight_min > 100 ||
+        breed.weight_max > 100 ||
+        breed.life_span > 25;
 
     useEffect(() => {
         dispatch(getAllTemperaments())
@@ -31,6 +81,11 @@ export default function CreateBreed() {
             ...breed,
             [e.target.name]: e.target.value
         })
+
+        setErrors(validate({
+            ...breed,
+            [e.target.name]: e.target.value
+        }))
     }
 
     const handleSelect = e => {
@@ -66,6 +121,7 @@ export default function CreateBreed() {
                         value={breed.name}
                         placeholder="Enter name..."
                     />
+                    {errors.name && <p className="errors">{errors.name}</p>}
                 </label>
                 
                 <label>Height Min:
@@ -76,6 +132,7 @@ export default function CreateBreed() {
                         value={breed.height_min}
                         placeholder="1 - 100..."
                     />
+                    {errors.height_min && <p className="errors">{errors.height_min}</p>}
                 </label>
                 
                 <label>Height Max:
@@ -86,6 +143,7 @@ export default function CreateBreed() {
                         value={breed.height_max}
                         placeholder="1 - 100..."
                     />
+                    {errors.height_max && <p className="errors">{errors.height_max}</p>}
                 </label>
 
                 <label>Weight Min:
@@ -96,6 +154,7 @@ export default function CreateBreed() {
                         value={breed.weight_min}
                         placeholder="1 - 100..."
                     />
+                    {errors.weight_min && <p className="errors">{errors.weight_min}</p>}
                 </label>
 
                 <label>Weight Max:
@@ -106,6 +165,7 @@ export default function CreateBreed() {
                         value={breed.weight_max}
                         placeholder="1 - 100..."
                     />
+                    {errors.weight_max && <p className="errors">{errors.weight_max}</p>}
                 </label>
 
                 <label>Life span:
@@ -116,6 +176,7 @@ export default function CreateBreed() {
                         value={breed.life_span}
                         placeholder="1 - 25..."
                     />
+                    {errors.life_span && <p className="errors">{errors.life_span}</p>}
                 </label>
                 
                 <label>Image:
@@ -158,7 +219,7 @@ export default function CreateBreed() {
 
                 </div>
 
-                <button type="submit">Create</button>
+                <button disabled={disabled} type="submit">Create</button>
             </form>
         </div>
     )

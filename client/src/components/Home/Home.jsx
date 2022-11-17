@@ -18,7 +18,6 @@ export default function Breeds(props){
     const [perPage] = useState(8);
     const lastBreed = currentPage * perPage;
     const firstBreed = lastBreed - perPage;
-    
     const breeds = allBreeds && allBreeds?.slice(firstBreed, lastBreed);
 
     useEffect(() => {
@@ -33,7 +32,7 @@ export default function Breeds(props){
         }
     }
     const nextPaginate = () => {
-        if (currentPage < allBreeds?.length/perPage){    
+        if (currentPage < allBreeds.length/perPage){    
         dispatch(setCurrentPage(currentPage+1))
         }
     }
@@ -42,7 +41,8 @@ export default function Breeds(props){
             <Nav />
             <Pagination perPage = {perPage} totalBreeds = {allBreeds?.length} paginate = {paginate} previousPaginate = {previousPaginate} nextPaginate = {nextPaginate} />
             <Filters />
-            {breeds && breeds.map(b=>{
+            {console.log(breeds)}
+            {breeds.length!==0 ? breeds.map(b=>{
                 return (
                     <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
                         <BreedCards 
@@ -56,7 +56,15 @@ export default function Breeds(props){
                         
                     </Link>
                     )
-            })}
+            }) : <BreedCards 
+                    key = "key"
+                    name = "Error: Breed not found!"
+                    img = "https://pbs.twimg.com/media/FNVUHJsX0AAPrqT.jpg"//"https://img.freepik.com/foto-gratis/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg"
+                    weight_max = "???"
+                    weight_min = "???"
+                    temperament = {["?","?","?"]}
+                />
+            }
         </div>
     )
 }
