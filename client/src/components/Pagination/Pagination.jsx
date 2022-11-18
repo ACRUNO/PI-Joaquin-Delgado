@@ -15,7 +15,7 @@ export default function Pagination({perPage, totalBreeds, paginate, previousPagi
                 <li className="pages">
                     <button onClick={() => previousPaginate()}>{"<<"}</button>
                     {pageNumbers.map(n =>(
-                        <button className="" onClick={() => paginate(n)}>{n}</button>    
+                        <button key={n} className="" onClick={() => paginate(n)}>{n}</button>    
                         )
                     )}
                     <button onClick={() => nextPaginate()}>{">>"}</button>

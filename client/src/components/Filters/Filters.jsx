@@ -28,20 +28,19 @@ export default function Filters(){
 
     useEffect(() => {
         dispatch(getAllTemperaments())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     return(
         <div>
             <div>
-                <select onChange={(e) => handleOrderFilter(e)}>
-                    <option disabled selected>Alphabetic Order...</option>
+                <select defaultValue={"Alphabetic Order..."} onChange={(e) => handleOrderFilter(e)}>
+                    <option disabled>Alphabetic Order...</option>
                     <option>A - Z</option>
                     <option>Z - A</option>
                 </select>
 
-                <select onChange={(e) => handleWeightFilter(e)}>
-                    <option disabled selected>weight...</option>
+                <select defaultValue={"Weight..."} onChange={(e) => handleWeightFilter(e)}>
+                    <option disabled>Weight...</option>
                     <option>Less</option>
                     <option>More</option>
                 </select>
@@ -56,7 +55,7 @@ export default function Filters(){
                     <option>All Temperaments</option>
                     {allTemperaments?.map(t => {
                         return (
-                            <option value={t.name}>{t.name}</option>
+                            <option key={t.name} value={t.name}>{t.name}</option>
                         )
                     })}
                 </select>

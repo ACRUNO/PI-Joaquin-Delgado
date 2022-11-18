@@ -1,13 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { getBreedDetails } from "../../actions";
+import { getBreedDetails, clearBreedDetail } from "../../actions";
 
 
 
-export default function BreedDetails(props) {
+export default function BreedDetails() {
 
     const dispatch = useDispatch();
     const breedDetail = useSelector(state => state.breedDetail) 
@@ -16,24 +15,36 @@ export default function BreedDetails(props) {
 
     useEffect(() => {
         dispatch(getBreedDetails(id))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    console.log(breedDetail);
+
+        return () => {
+            dispatch(clearBreedDetail());
+        }
+
+    }, [dispatch, id]);
+
+
     return (
         <div>
             <Link to={`/dogs`}>
-            <button>Back</button>
+                <button>Back</button>
             </Link>
-            <h1>BREED: {breedDetail.name}</h1>
-            <img src={breedDetail.img} alt=""/>
-            <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
-            <p>LIFE SPAN: {breedDetail.life_span}</p>
-            <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>
-            <ul>Temperaments: 
-                {breedDetail.temperament?.map(t => {
-                    return ( <li>{t}</li>)
-                })}
-            </ul>
+            <div>
+                {breedDetail.length !==0 ? 
+                <div>
+                    <h1>BREED: {breedDetail.name}</h1>
+                    <img src={breedDetail.img} alt=""/>
+                    <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
+                    <p>LIFE SPAN: {breedDetail.life_span}</p>
+                    <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>
+                    <ul>Temperaments: 
+                        {breedDetail.temperament?.map(t => {
+                            return ( <li key={t}>{t}</li>)
+                        })}
+                    </ul> 
+                </div> : 
+                <h3>Loading...</h3>
+                }
+            </div>
         </div>
     )
 }

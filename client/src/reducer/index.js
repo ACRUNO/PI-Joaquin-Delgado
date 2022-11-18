@@ -1,4 +1,4 @@
-import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER } from "../actions/index.js";
+import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER, CLEAR_BREED_DETAIL, SET_LOADING } from "../actions/index.js";
 
 const initialState = {
     allBreeds: [],
@@ -6,15 +6,20 @@ const initialState = {
     temperaments: [],
     breedDetail: [],
     page: 1,
+    loading: true
 }
 
 
 function rootReducer(state = initialState, action) {
     switch(action.type){
         case GET_ALL_BREEDS:
-            return {...state, breeds: action.payload, allBreeds: action.payload}
+            console.log("reducer", action.payload);
+            return {...state, breeds: action.payload, allBreeds: action.payload, loading: false}
         
         case GET_BREED_DETAILS:
+            return {...state, breedDetail: action.payload}
+
+        case CLEAR_BREED_DETAIL:
             return {...state, breedDetail: action.payload}
         
         case SET_CURRENT_PAGE:
@@ -26,12 +31,15 @@ function rootReducer(state = initialState, action) {
         case GET_ALL_TEMPERAMENTS: 
             return {...state, temperaments: action.payload}
 
+        case SET_LOADING:
+            console.log("reducer",action.payload);
+            return{...state, loading: action.payload}
+
         case CREATE_BREED:
             return {...state}
 
         case ORDER_FILTER:
             let sorted = [...state.breeds];
-            console.log(sorted);
             sorted = sorted.sort((a , b) => {
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return action.payload === "A - Z" ? 1 : -1;
                 if(a.name.toLowerCase() < b.name.toLowerCase()) return action.payload === "Z - A" ? 1 : -1;

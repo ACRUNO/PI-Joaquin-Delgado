@@ -69,12 +69,13 @@ export default function CreateBreed() {
         breed.height_max > 100 ||
         breed.weight_min > 100 ||
         breed.weight_max > 100 ||
+        breed.height_min > breed.height_max ||
+        breed.weight_min > breed.weight_max ||
         breed.life_span > 25;
 
     useEffect(() => {
         dispatch(getAllTemperaments())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [dispatch])
 
     const handleChange = e => {
         setBreed({
@@ -111,7 +112,7 @@ export default function CreateBreed() {
                 </Link>
             </div>
             <h3>Create your Breed</h3>
-            <form onSubmit={e => handleSubmit(e)}>
+            <form onSubmit={e => handleSubmit(e)} autoComplete="off">
                 
                 <label>Enter name:
                     <input 
@@ -210,7 +211,7 @@ export default function CreateBreed() {
                     <ul>
                         {breed.temperament?.map(t => {
                             return (
-                                <li>
+                                <li key={t}>
                                     {t}
                                 </li>
                             )
@@ -219,7 +220,7 @@ export default function CreateBreed() {
 
                 </div>
 
-                <button disabled={disabled} type="submit">Create</button>
+                <button disabled={disabled} type="submit">Create Breed!!</button>
             </form>
         </div>
     )

@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_ALL_BREEDS = "GET_ALL_BREEDS";
 export const GET_BREED_DETAILS = "GET_BREED_DETAILS";
 export const CREATE_BREED = "CREATE_BREED";
-/* export const DELETE_BREED = "DELETE_BREED"; */
+export const CLEAR_BREED_DETAIL = "CLEAR_BREED_DETAIL";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const SEARCH_BREED = "SEARCH_BREED";
 export const ORDER_FILTER = "ORDER_FILTER";
@@ -11,6 +11,7 @@ export const ORDER_WEIGHT_FILTER = "ORDER_WEIGHT_FILTER";
 export const CREATION_FILTER = "CREATION_FILTER";
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
 export const TEMPERAMENTS_FILTER = "TEMPERAMENTS_FILTER";
+export const SET_LOADING = "SET_LOADING";
 
 
 
@@ -42,7 +43,6 @@ export const getAllTemperaments = () => async dispatch => {
 export const getBreedDetails = (id) => async dispatch => {
     try {
         const breed = await axios.get(`http://localhost:3001/dogs/${id}`);
-        console.log("detalles",breed.data[0]);
         return dispatch({
             type: GET_BREED_DETAILS,
             payload: breed.data[0]
@@ -51,6 +51,14 @@ export const getBreedDetails = (id) => async dispatch => {
         alert(error);
     }
 }
+
+export const clearBreedDetail = () => {
+    return {
+        type: CLEAR_BREED_DETAIL,
+        payload: []
+    }
+}
+
 
 export const setCurrentPage = (page) => {
     return {
@@ -107,6 +115,13 @@ export const creationFilter = value => {
 export const temperamentsFilter = value => {
     return {
         type: TEMPERAMENTS_FILTER,
+        payload: value
+    }
+}
+
+export const setLoading = value => {
+    return {
+        type: SET_LOADING,
         payload: value
     }
 }

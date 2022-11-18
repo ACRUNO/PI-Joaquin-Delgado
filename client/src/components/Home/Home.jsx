@@ -10,7 +10,7 @@ import './Home.css';
 import Filters from "../Filters/Filters";
 
 
-export default function Breeds(props){
+export default function Breeds(){
 
     const dispatch = useDispatch();
     const allBreeds = useSelector(state => state.breeds) 
@@ -19,11 +19,11 @@ export default function Breeds(props){
     const lastBreed = currentPage * perPage;
     const firstBreed = lastBreed - perPage;
     const breeds = allBreeds && allBreeds?.slice(firstBreed, lastBreed);
+    
 
     useEffect(() => {
         dispatch(getAllBreeds())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [dispatch]);
 
     const paginate = page => dispatch(setCurrentPage(page));
     const previousPaginate = () => {
@@ -36,6 +36,8 @@ export default function Breeds(props){
         dispatch(setCurrentPage(currentPage+1))
         }
     }
+
+    
     return (
         <div className="home">
             <div className="nav">
@@ -51,6 +53,7 @@ export default function Breeds(props){
                         <Link to={`/dogs/${b.id}`} style={{ textDecoration: 'none' }}>
                             <BreedCards 
                                 key = {b.id}
+                                id = {b.id}
                                 name = {b.name}
                                 img = {b.img}
                                 weight_max = {b.weight_max}
@@ -60,14 +63,14 @@ export default function Breeds(props){
                             
                         </Link>
                         )
-                }) : <BreedCards 
+                }) :    <BreedCards 
                         key = "key"
                         name = "Error: Breed not found!"
                         img = "https://pbs.twimg.com/media/FNVUHJsX0AAPrqT.jpg"//"https://img.freepik.com/foto-gratis/lindo-perrito-haciendose-pasar-persona-negocios_23-2148985938.jpg"
                         weight_max = "???"
                         weight_min = "???"
-                        temperament = {["?","?","?"]}
-                    />
+                        temperament = {["?","??","???"]}
+                        />
                 }
             </div>
         </div>
