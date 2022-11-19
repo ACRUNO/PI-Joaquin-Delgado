@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { searchBreed, setCurrentPage } from "../../actions";
+import "./SearchBar.css"
 
 export default function SearchBar(){
 
@@ -15,7 +16,7 @@ export default function SearchBar(){
 
     return(
         <div>
-            <input type="text" placeholder="Breed..." onChange={e => handleChange(e)}></input>
+            <input className="search" type="text" placeholder="Breed..." onChange={e => handleChange(e)}></input>
         </div>
     )
 }

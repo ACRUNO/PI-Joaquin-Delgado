@@ -3,7 +3,7 @@
     display: flex;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: rgba(175, 236, 255, 0.425);
     grid-template-rows: max-content 200px 1fr;
@@ -12,7 +12,7 @@
     padding: 2px 16px;
     border-radius: 5px;
     width: 25rem;
-    height: 25rem;
+    height: 27rem;
     padding: 15px;
   }
   
@@ -27,30 +27,63 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 380px;
-    max-height: 270px;
+    width: 300px;
+    height: 230px;
     border-radius: 20px;
   }
 
-  .cards {
+  /* .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     grid-gap: 20px;
-}
+} */
 
 .title {
-    font-size: 20px;
+    font-size: 27px;
     color: #7023ff;
-
+    font-family: italic;
   }
 
-  
-.temperaments {
-    color: #1b1a12da;
+  .containertemp {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    padding-left: 5%;
+    color: #7023ff;
+  }
+
+  .temp {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  } 
+
+  .temp2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: c;
+  }
+
+/* .temperaments {
+    color: #16171ada;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding-left: 3px;
     padding-right: 3px;
     list-style: none;
-    justify-content: space-evenly
+    font-size: 15px;
+  } */
+
+  .weight {
+    font-family: italic;
+    font-size: 22px;
+  }
+
+  .span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

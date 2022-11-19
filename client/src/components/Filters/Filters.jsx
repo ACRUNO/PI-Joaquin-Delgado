@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { creationFilter, getAllTemperaments, orderFilter, orderWeightFilter, setCurrentPage, temperamentsFilter } from "../../actions";
-
+import './Filter.css';
 
 export default function Filters(){
 
@@ -31,8 +31,8 @@ export default function Filters(){
     }, [dispatch]);
 
     return(
-        <div>
-            <div>
+        <div className="cont">
+            <div className="filter">
                 <select defaultValue={"Alphabetic Order..."} onChange={(e) => handleOrderFilter(e)}>
                     <option disabled>Alphabetic Order...</option>
                     <option>A - Z</option>

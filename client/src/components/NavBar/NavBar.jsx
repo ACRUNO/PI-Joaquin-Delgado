@@ -1,20 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import './NavBar.css';
 
 
-export default function Nav(){
+export default function Nav() {
 
     return (
         <div className="nav">
-            <Link to = "/dogs">
-                <img className="img" src="data:image/jpeg;base64,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" alt="" />
+            <Link to="/dogs">
+                <img className="imgs" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3kvcGWHkYicdHNxCZVqPqa8DqYEG-6LSaHQ&usqp=CAU" alt="" />
             </Link>
-            <SearchBar/>
-
-            <Link to = "/creation">
-                <button>Creation</button>
-            </Link>
+            <div className="input">
+                <div className="navsearch">
+                    <SearchBar />
+                </div>
+                <Link className="btnsearch" to="/creation">
+                    <button className="btnnav">Creation</button>
+                </Link>
+            </div>
         </div>
     )
 }

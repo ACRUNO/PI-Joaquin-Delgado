@@ -13,12 +13,13 @@ export default function Pagination({perPage, totalBreeds, paginate, previousPagi
         <div className="pagination">
             <ul>
                 <li className="pages">
-                    <button onClick={() => previousPaginate()}>{"<<"}</button>
+                    <button className="btt" onClick={() => previousPaginate()}>{"<<"}</button>
+
                     {pageNumbers.map(n =>(
-                        <button key={n} className="" onClick={() => paginate(n)}>{n}</button>    
+                        <button key={n} className="btt" onClick={() => paginate(n)}>{n}</button>    
                         )
                     )}
-                    <button onClick={() => nextPaginate()}>{">>"}</button>
+                    <button className="btt" onClick={() => nextPaginate()}>{">>"}</button>
                 </li>
             </ul>
         </div>

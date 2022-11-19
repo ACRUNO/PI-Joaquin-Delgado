@@ -1,0 +1,11 @@
+
+
+.search {
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    background-color: #05cdff33;
+    border: 1px solid rgba(77, 250, 178, 0.685);
+    margin-top: 10px;
+    display: inline;
+    width: 150%;
+}
