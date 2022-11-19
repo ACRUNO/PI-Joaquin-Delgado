@@ -65,10 +65,10 @@ export default function CreateBreed() {
         breed.weight_max.length &&
         breed.temperament.length
     ) ||
-        breed.height_min > 100 ||
-        breed.height_max > 100 ||
-        breed.weight_min > 100 ||
-        breed.weight_max > 100 ||
+        breed.height_min > 100 || breed.height_min < 1 ||
+        breed.height_max > 100 || breed.height_max < 1 ||
+        breed.weight_min > 100 || breed.weight_min < 1 ||
+        breed.weight_max > 100 || breed.weight_max < 1 ||
         breed.height_min > breed.height_max ||
         breed.weight_min > breed.weight_max ||
         breed.life_span > 25;
