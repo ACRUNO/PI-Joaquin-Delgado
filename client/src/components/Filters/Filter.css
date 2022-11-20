@@ -13,3 +13,24 @@
     width: 50%;
     padding: 30px;
 }
+
+.selects select {
+    position: relative;
+    background-color: dodgerblue;
+    font-family: serif;
+    font-size: medium;
+    border: 6px solid transparent;
+    border-radius: 5px;
+}
+
+.selects:hover select {
+    background-color: rgba(0, 255, 255, 0.801);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.selects option {
+    border: 6px solid transparent;
+    border-radius: 10px;
+    background-color: aquamarine;
+}

@@ -1,24 +1,36 @@
 .pages {
     /* margin-left: 10px; */
-    align-items: center;
-    display: inline;
-    padding: 8px;
+    /* align-items: center; */
+    display: inline-flex;
+    padding: 0.3rem;
 }
+
 
 .pagination {
     padding: 0.5rem;
 }
 
 .btt {
+    border: 2px solid rgb(0, 238, 255);
     border-radius: 7px;
-    transition-duration: 0.4s;
     width: 30px;
     height: 30px;
     margin-top: 10px;
+    font-weight: bold;
+    color: bisque;
+    background-color: rgb(124, 124, 124);
 }
 
 .btt:hover {
     background-color: rgba(59, 100, 212, 0.699);
     cursor: pointer;
     border-radius: 10px;
+}
+
+.active {
+    border-radius: 7px;
+    width: 35px;
+    height: 35px;
+    margin-top: 7px;
+    background-color: rgba(83, 177, 169, 0.425);
 }

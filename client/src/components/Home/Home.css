@@ -23,7 +23,7 @@
     height: 90%;
     justify-content: space-around;
     flex-wrap: wrap;
-    max-width: 50%;
+    max-width: 100%;
 }
 
 .home_pagination {
