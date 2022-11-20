@@ -1,31 +1,36 @@
 .pages {
-    /* margin-left: 10px; */
-    /* align-items: center; */
     display: inline-flex;
     padding: 0.3rem;
+    display: flex;
+    margin-left: 27%;
+    width: 45%;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-
 .pagination {
-    padding: 0.5rem;
+    padding: 10px;
+
 }
 
 .btt {
-    border: 2px solid rgb(0, 238, 255);
-    border-radius: 7px;
+
+
+    border: 2px solid black;
+    color: rgb(245, 245, 245);
+    border-radius: 6px;
+    background: #202020;
     width: 30px;
     height: 30px;
     margin-top: 10px;
-    font-weight: bold;
-    color: bisque;
-    background-color: rgb(124, 124, 124);
+    cursor: pointer;
+    padding: 0 6px;
 }
 
 .btt:hover {
-    background-color: rgba(59, 100, 212, 0.699);
-    cursor: pointer;
-    border-radius: 10px;
+    background: #20202086;
 }
+
 
 .active {
     border-radius: 7px;
@@ -33,4 +38,6 @@
     height: 35px;
     margin-top: 7px;
     background-color: rgba(83, 177, 169, 0.425);
+    background: #20202086;
+    font-weight: bold;
 }
