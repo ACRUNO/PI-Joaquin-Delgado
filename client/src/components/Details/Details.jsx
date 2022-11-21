@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { getBreedDetails, clearBreedDetail } from "../../actions";
-
+import './Details.css';
 
 
 export default function BreedDetails() {
 
     const dispatch = useDispatch();
-    const breedDetail = useSelector(state => state.breedDetail) 
+    const breedDetail = useSelector(state => state.breedDetail)
 
     const { id } = useParams();
 
@@ -24,27 +24,44 @@ export default function BreedDetails() {
 
 
     return (
-        <div>
-            <Link to={`/dogs`}>
-                <button>Back</button>
-            </Link>
-            <div>
-                {breedDetail.length !==0 ? 
-                <div>
-                    <h1>BREED: {breedDetail.name}</h1>
-                    <img src={breedDetail.img} alt=""/>
-                    <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
-                    <p>LIFE SPAN: {breedDetail.life_span}</p>
-                    <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>
-                    <ul>Temperaments: 
-                        {breedDetail.temperament?.map(t => {
-                            return ( <li key={t}>{t}</li>)
-                        })}
-                    </ul> 
-                </div> : 
-                <h3>Loading...</h3>
-                }
+        <div className="detailspage">
+            <div className="backdetail">
+                <Link to={`/dogs`}>
+                    <button className="buttondetail">Back</button>
+                </Link>
             </div>
+            {breedDetail.length !== 0 ?
+                <div className="prueba">
+                    <div className="detailcontainer">
+                        <div className="detailtitle">
+                            <h1>{breedDetail.name}</h1>
+                        </div>
+                        <div className="contdetailimg">
+                            <img className="detailimg" src={breedDetail.img} alt="" />
+                        </div>
+                        <div className="breeddetails">
+                            <p>WEIGHT: {breedDetail.weight_min} - {breedDetail.weight_max}kg</p>
+                            <p>LIFE SPAN: {breedDetail.life_span}</p>
+                            <span>HEIGHT: {breedDetail.height_min} - {breedDetail.height_max}cm</span>
+                        </div>
+                        <div>
+                            <span className="tempdetail"> 
+                                Temperaments:
+                            </span>
+                            <span className="alltemps">
+                                {breedDetail.temperament?.map(t => `${t}`).join(', ')}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                :
+                <div>
+                    <div className="detailcontainer">
+                        <h2 className="loading">Loading...</h2>
+                    </div>
+                </div>
+            }
+
         </div>
     )
 }

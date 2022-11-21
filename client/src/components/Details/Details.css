@@ -1,0 +1,121 @@
+.detailspage {
+    background-color: rgba(71, 117, 107, 0.534);
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.backdetail {
+    padding-top: 40px;
+    padding-left: 60px;
+}
+
+.buttondetail {
+    font-size: 30px;
+    font-family: Rockwell;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.buttondetail::after {
+    content: "";
+    background-color: #7a18ec;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+.buttondetail:hover::after {
+    top: 0px;
+    left: 0px;
+}
+
+.prueba {
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.detailcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 10px inset rgb(141, 27, 255);
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+.loading {
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 50px;
+}
+
+.detailtitle{
+    position: relative;
+    text-transform: uppercase;
+    font-size: large;
+    font-style: italic;
+    font-family: Copperplate, Papyrus, fantasy;
+    color: rgb(0, 0, 0);
+    background-color: rgba(238, 130, 238, 0.425);
+    border: 2px solid rebeccapurple ;
+    border-radius: 50px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.contdetailimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+}
+
+.detailimg {
+    width: 70%;
+    height: 70%;
+    max-height: 600px;
+    border: 4px rgb(137, 47, 255);
+    border-style: groove;
+}
+
+.breeddetails {
+    /* padding: 5px; */
+    font-family: Rockwell;
+    font-style: italic;	
+    font-size: 30px;
+    color: #000000;
+    /* margin-top: 5px; */
+}
+
+.tempdetail {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-style: italic;
+    font-weight: 470;
+    font-size: 30px;
+    margin-top: 15px;
+} 
+
+.alltemps {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    align-items: center;
+    text-align: center;
+    font-style: italic;
+    font-size: 25px;
+}

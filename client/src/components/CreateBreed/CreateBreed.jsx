@@ -78,11 +78,11 @@ export default function CreateBreed() {
     }, [dispatch])
 
     const handleChange = e => {
-        setBreed({
-            ...breed,
-            [e.target.name]: e.target.value
-        })
-
+            setBreed({
+                ...breed,
+                [e.target.name]: e.target.value
+            })
+        
         setErrors(validate({
             ...breed,
             [e.target.name]: e.target.value
