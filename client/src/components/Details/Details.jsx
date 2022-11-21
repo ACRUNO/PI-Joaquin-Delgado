@@ -31,7 +31,7 @@ export default function BreedDetails() {
                 </Link>
             </div>
             {breedDetail.length !== 0 ?
-                <div className="prueba">
+                <div className="contdetail">
                     <div className="detailcontainer">
                         <div className="detailtitle">
                             <h1>{breedDetail.name}</h1>

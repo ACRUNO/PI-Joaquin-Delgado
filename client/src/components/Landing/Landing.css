@@ -19,46 +19,8 @@ a {
     text-decoration: none #000000 solid;
 }
 
-/* 
 .button {
-    position: absolute;
-    top: 20%;
-    left: 45%;
-    background-color: rgb(100, 159, 177);
-    z-index: 100;
-    border-radius: 3%;
-    width: 15%;
-    height: 5%;
-    text-decoration: none;
-    border: 3px solid rgb(24, 155, 179);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.button:hover {
-    box-shadow: 2px 7px 7px rgb(54, 138, 216);
-    width: 15.2%;
-    height: 5.2%;
-} */
-
-
-
-/* 
-.Imagen_Titulo {
-
-    position: absolute;
-    width: 600px;
-    height: 300px;
-    top: 4%;
-    left: calc(50% - 300px);
-
-  } */
-
-
-/* CSS */
-.button {
-    background-color: #414d4d;
+    background-color: #000000;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
     color: #dadada;
@@ -75,7 +37,7 @@ a {
     text-decoration: none #000000 solid;
     /* text-decoration-thickness: auto; */
     width: 100%;
-    max-width: 460px;
+    max-width: 550px;
     position: relative;
     cursor: pointer;
     transform: rotate(-2deg);
@@ -112,18 +74,16 @@ a {
 }
 
 
-
-/* CSS */
 .button {
     background-color: transparent;
     border: 1px solid #266DB6;
     box-sizing: border-box;
-    color: #00132C;
-    font-family: "Avenir Next LT W01 Bold", sans-serif;
-    font-size: 16px;
+    color: #000000;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 30px;
     font-weight: 700;
-    line-height: 24px;
-    padding: 16px 23px;
+    line-height: 20px;
+    padding: 16px 30px;
     position: relative;
     text-decoration: none;
     user-select: none;
@@ -155,11 +115,11 @@ a {
 }
 
 .button:hover:before {
-    background-color: #272929;
+    background-color: #000000;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
     .button {
-        padding: 16px 32px;
+        padding: 30px 90px;
     }
 }
