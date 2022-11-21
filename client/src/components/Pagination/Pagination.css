@@ -9,13 +9,11 @@
 }
 
 .pagination {
-    padding: 10px;
-
+    padding: 1px;
+    margin-top: 1px;
 }
 
 .btt {
-
-
     border: 2px solid black;
     color: rgb(245, 245, 245);
     border-radius: 6px;

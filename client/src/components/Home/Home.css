@@ -1,6 +1,6 @@
 .home {
     min-height: 100vh;
-    background-color: rgba(90, 84, 84, 0.534);
+    background-color: rgba(71, 117, 107, 0.534);
     /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx75I2sOx1KbYg8Flkzjwb2QvMa43VdZWPKA&usqp=CAU"); */
 }
 
@@ -27,8 +27,8 @@
 }
 
 
-.navbar {
+/* .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */

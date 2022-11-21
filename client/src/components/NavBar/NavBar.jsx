@@ -9,7 +9,7 @@ export default function Nav() {
     return (
         <div className="nav">
             <Link to="/dogs">
-                <img className="imgs" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3kvcGWHkYicdHNxCZVqPqa8DqYEG-6LSaHQ&usqp=CAU" alt="" />
+                <img className="imgs" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYZYgnrw-fZBeqReiGyZ-GighKf9GbOL3rXA&usqp=CAU" alt="" />
             </Link>
             <div className="input">
                 <div className="navsearch">

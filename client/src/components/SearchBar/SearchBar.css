@@ -3,9 +3,42 @@
 .search {
     border-radius: 5px;
     padding: 10px 15px 10px 15px;
-    background-color: #05cdff33;
-    border: 1px solid rgba(77, 250, 178, 0.685);
-    margin-top: 10px;
+    border: 2px solid rgba(77, 215, 250, 0.521);
+    background: linear-gradient(21deg, #6fc0ecbd, #bd33fd);
     display: inline;
-    width: 150%;
+    width: 156%;
 }
+
+.search::placeholder {
+    color: rgb(53, 53, 53);
+}
+
+.search:focus {
+    border: 3px solid rgba(221, 77, 250, 0.623);
+    opacity: 1;
+    transform: scale(1);
+    outline: none;
+}
+
+
+/* 
+
+.search {
+	
+	
+	position:relative;
+	
+	
+	font-size: 1.5em;
+	
+
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	
+	
+	padding: 3px;
+	
+	
+	display: inline-block;
+	
+	border-radius: 9999em;
+} */

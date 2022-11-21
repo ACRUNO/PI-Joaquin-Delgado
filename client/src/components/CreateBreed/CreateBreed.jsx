@@ -183,7 +183,7 @@ export default function CreateBreed() {
                 <label>Image:
                     <input 
                         onChange={(e) => handleChange(e)}
-                        type="text"
+                        type="url"
                         name="img"
                         value={breed.img}
                         placeholder="URL..."

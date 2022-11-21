@@ -42,8 +42,6 @@ export default function Breeds() {
         <div className="home">
             <div className="navbar">
                 <Nav />
-            </div>
-            <div className="home_pagination">
                 <Pagination perPage={perPage} totalBreeds={allBreeds?.length} paginate={paginate} previousPaginate={previousPaginate} nextPaginate={nextPaginate} />
             </div>
             <div className="filters">

@@ -16,15 +16,17 @@
 
 .selects select {
     position: relative;
-    background-color: dodgerblue;
-    font-family: serif;
+    /* background-color: dodgerblue; */
+    background: #202020;
+    color: rgb(245, 245, 245);
+    /* font-family: serif; */
     font-size: medium;
     border: 6px solid transparent;
     border-radius: 5px;
 }
 
 .selects:hover select {
-    background-color: rgba(0, 255, 255, 0.801);
+    background: #20202086;
     cursor: pointer;
     border-radius: 10px;
 }
@@ -32,5 +34,5 @@
 .selects option {
     border: 6px solid transparent;
     border-radius: 10px;
-    background-color: aquamarine;
+    background: #202020c0;
 }

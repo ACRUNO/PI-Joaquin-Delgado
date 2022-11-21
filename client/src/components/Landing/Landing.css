@@ -7,7 +7,7 @@
 }
 
 .loader {
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 7%;
@@ -58,10 +58,10 @@ a {
 
 /* CSS */
 .button {
-    background-color: #3DD1E7;
+    background-color: #414d4d;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
-    color: #000000;
+    color: #dadada;
     display: flex;
     /* font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
     font-family: "Trebuchet MS", Verdana, sans-serif;
@@ -108,5 +108,58 @@ a {
     .button {
         padding: .75rem 3rem;
         font-size: 1.25rem;
+    }
+}
+
+
+
+/* CSS */
+.button {
+    background-color: transparent;
+    border: 1px solid #266DB6;
+    box-sizing: border-box;
+    color: #00132C;
+    font-family: "Avenir Next LT W01 Bold", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 16px 23px;
+    position: relative;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button:hover,
+.button:active {
+    outline: 0;
+}
+
+.button:hover {
+    background-color: transparent;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.button:before {
+    background-color: #D5EDF6;
+    content: "";
+    height: calc(100% + 3px);
+    position: absolute;
+    right: -7px;
+    top: -9px;
+    transition: background-color 300ms ease-in;
+    width: 100%;
+    z-index: -1;
+}
+
+.button:hover:before {
+    background-color: #272929;
+}
+
+@media (min-width: 768px) {
+    .button {
+        padding: 16px 32px;
     }
 }
