@@ -1,3 +1,241 @@
 .errors {
     color: red;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.createcontainer {
+    background-color: rgba(71, 117, 107, 0.534);
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+.createback {
+    padding-top: 40px;
+    padding-left: 60px;
+    display: flex;
+}
+
+
+
+.createtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30%;
+    position: relative;
+    text-transform: uppercase;
+    font-size: large;
+    font-style: italic;
+    font-family: Copperplate, Papyrus, fantasy;
+    color: rgb(0, 0, 0);
+    background-color: rgba(238, 130, 238, 0.425);
+    border: 2px solid rebeccapurple;
+    border-radius: 50px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.buttoncreate {
+    font-size: 30px;
+    font-family: Rockwell;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.buttoncreate::after {
+    content: "";
+    background-color: #7a18ec;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 7px;
+    left: 7px;
+    transition: 0.2s;
+}
+
+.buttoncreate:hover::after {
+    top: 0px;
+    left: 0px;
+}
+
+.formcontainer {
+    margin-top: 10px;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px inset rgb(141, 27, 255);
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.formdiv {
+    font-family: Rockwell;
+    font-style: italic;
+    font-size: 30px;
+    color: #000000;
+    width: 100%;
+}
+
+.labelform {
+    text-align: center;
+    margin-left: 32%;
+}
+
+.inputform {
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+    border: 2px solid rgba(210, 77, 250, 0.521);
+    background: linear-gradient(21deg, #6fc0ecbd, #bd33fd);
+    display: inline;
+    width: 100%;
+    font-size: medium;
+    font-weight: 600;
+    font-family: Rockwell;
+}
+
+.inputform::placeholder {
+    color: rgb(53, 53, 53);
+}
+
+.inputform:focus {
+    border: 3px solid rgba(221, 77, 250, 0.623);
+    opacity: 1;
+    transform: scale(1);
+    outline: none;
+}
+
+
+.tempforms {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+
+}
+
+
+.tempforms select {
+    position: relative;
+    /* background-color: dodgerblue; */
+    background: #202020;
+    color: rgb(245, 245, 245);
+    /* font-family: serif; */
+    font-size: medium;
+    border: 6px solid transparent;
+    border-radius: 5px;
+}
+
+.tempforms:hover select {
+    background: #20202086;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.tempforms option {
+    border: 6px solid transparent;
+    border-radius: 10px;
+    background: #202020c0;
+}
+
+li {
+    list-style: none;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: Rockwell;
+}
+
+
+.divbtnform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.btnform {
+    align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: 600;
+    font-size: 20px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.btnform:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.btnform:hover:after {
+    transform: translate(0, 0);
+}
+
+.btnform:active {
+    background-color: #f7baef;
+    outline: 0;
+}
+
+.btnform:disabled {
+    background-color: grey;
+    text-decoration: line-through;
+}
+
+.btnform:disabled:hover {
+    background-color: rgb(255, 0, 0);
+    text-decoration: line-through;
+}
+
+.btnform:hover {
+    outline: 0;
+    background-color: #ffdeda;
+}
+
+@media (min-width: 768px) {
+    .btnform {
+        padding: 0 40px;
+    }
 }
