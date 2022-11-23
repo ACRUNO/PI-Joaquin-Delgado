@@ -161,6 +161,15 @@ li {
     font-family: Rockwell;
 }
 
+ul {
+    width: 100%;
+}
+
+.listform {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 .divbtnform {
     display: flex;
@@ -238,4 +247,21 @@ li {
     .btnform {
         padding: 0 40px;
     }
+}
+
+
+.btndelete{
+    background-color: rgb(255, 71, 132);
+    padding: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+.btndelete:hover{
+    background-color: rgb(255, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 4px;
+    cursor: pointer;
 }

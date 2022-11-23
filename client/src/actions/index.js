@@ -15,13 +15,18 @@ export const TEMPERAMENTS_FILTER = "TEMPERAMENTS_FILTER";
 
 
 
-export const getAllBreeds = () => { return async dispatch => {
+export const getAllBreeds = () => { return dispatch => {
     try {
-        let breeds = await axios.get("http://localhost:3001/dogs");
-        return dispatch({
+        return fetch("http://localhost:3001/dogs")
+        .then(r => r.json())
+        .then(breed => dispatch({
+            type: GET_ALL_BREEDS,
+            payload: breed
+        }))
+/*         return dispatch({
             type: GET_ALL_BREEDS,
             payload: breeds.data
-        })
+        }) */
     } catch (error) {
         alert(error);
     }
@@ -82,12 +87,12 @@ export const searchBreed = (name) => async dispatch  => {
     }
 }
 
-export const createBreed =  async breed => {
+export const createBreed =  breed => async dispatch => {
     let breeds = await axios.post('http://localhost:3001/dogs', breed);
-    return {
+    return dispatch({
         type: CREATE_BREED,
         payload: breeds
-    }
+    })
 } 
 
 

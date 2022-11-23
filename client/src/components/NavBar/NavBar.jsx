@@ -8,7 +8,7 @@ export default function Nav() {
 
     return (
         <div className="nav">
-            <Link to="/dogs">
+            <Link to="/">
                 <img className="imgs" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYZYgnrw-fZBeqReiGyZ-GighKf9GbOL3rXA&usqp=CAU" alt="" />
             </Link>
             <div className="input">

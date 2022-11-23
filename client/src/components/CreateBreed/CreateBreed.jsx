@@ -78,6 +78,7 @@ export default function CreateBreed() {
     }, [dispatch])
 
     const handleChange = e => {
+        e.preventDefault()
         setBreed({
             ...breed,
             [e.target.name]: e.target.value
@@ -89,7 +90,17 @@ export default function CreateBreed() {
         }))
     }
 
+    const handleDelete = (e, t) => {
+        e.preventDefault();
+        setBreed({
+            ...breed,
+            temperament: breed.temperament.filter(v => v !==t)
+        })
+    }
+
+
     const handleSelect = e => {
+        e.preventDefault()
         if (breed.temperament.includes(e.target.value)) return alert('Temperament repeated')
         setBreed({
             ...breed,
@@ -98,10 +109,10 @@ export default function CreateBreed() {
     }
 
     const handleSubmit = e => {
+        e.preventDefault()
         dispatch(createBreed(breed))
         history.push("/dogs");
     }
-
 
 
     return (
@@ -227,11 +238,14 @@ export default function CreateBreed() {
                         </select>
 
                         <ul>
-                            {breed.temperament?.map(t => {
+                            {breed.temperament?.map((t,i) => {
                                 return (
-                                    <li key={t}>
-                                        {t}
-                                    </li>
+                                    <div className="listform" key={i++}>
+                                        <li key={t}>
+                                            {t}
+                                        </li>
+                                        <button className="btndelete" onClick={(e) => handleDelete(e,t)}>X</button>
+                                    </div>
                                 )
                             })}
                         </ul>
