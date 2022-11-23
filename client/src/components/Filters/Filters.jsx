@@ -10,21 +10,37 @@ export default function Filters() {
 
     const handleOrderFilter = e => {
         dispatch(orderFilter(e.target.value));
+        const weight = document.getElementById('weight');
+        weight.selectedIndex = 0;        
     }
 
     const handleWeightFilter = e => {
         dispatch(orderWeightFilter(e.target.value));
+        const alphabetic = document.getElementById('alphabetic');
+        alphabetic.selectedIndex = 0;
     }
 
     const createdBreeds = e => {
         dispatch(setCurrentPage(1))
         dispatch(creationFilter(e.target.value));
+        const weight = document.getElementById('weight');
+        weight.selectedIndex = 0;  
+        const alphabetic = document.getElementById('alphabetic');
+        alphabetic.selectedIndex = 0;
+        const temps = document.getElementById('temps');
+        temps.selectedIndex = 0;
     }
 
     const handleTemperamentsFilter = e => {
         dispatch(setCurrentPage(1));
         dispatch(temperamentsFilter(e.target.value));
-    }
+        const weight = document.getElementById('weight');
+        weight.selectedIndex = 0;  
+        const alphabetic = document.getElementById('alphabetic');
+        alphabetic.selectedIndex = 0;
+        const breeds = document.getElementById('breeds');
+        breeds.selectedIndex = 0;
+    }   
 
     useEffect(() => {
         dispatch(getAllTemperaments())
@@ -34,7 +50,7 @@ export default function Filters() {
         <div className="cont">
             <div className="filter">
                 <div className="selects">
-                    <select defaultValue={"Alphabetic Order..."} onChange={(e) => handleOrderFilter(e)}>
+                    <select id="alphabetic" defaultValue={"Alphabetic Order..."} onChange={(e) => handleOrderFilter(e)}>
                         <option disabled>Alphabetic Order...</option>
                         <option>A - Z</option>
                         <option>Z - A</option>
@@ -42,7 +58,7 @@ export default function Filters() {
                 </div>
 
                 <div className="selects">
-                    <select defaultValue={"Weight..."} onChange={(e) => handleWeightFilter(e)}>
+                    <select id="weight" defaultValue={"Weight..."} onChange={(e) => handleWeightFilter(e)}>
                         <option disabled>Weight...</option>
                         <option>Less</option>
                         <option>More</option>
@@ -50,7 +66,7 @@ export default function Filters() {
                 </div>
 
                 <div className="selects">
-                    <select onChange={(e) => createdBreeds(e)}>
+                    <select id="breeds" onChange={(e) => createdBreeds(e)}>
                         <option>All Breeds</option>
                         <option>Created</option>
                         <option>Existing</option>
@@ -58,7 +74,7 @@ export default function Filters() {
                 </div>
 
                 <div className="selects">
-                    <select onChange={e => handleTemperamentsFilter(e)}>
+                    <select id="temps" onChange={e => handleTemperamentsFilter(e)}>
                         <option>All Temperaments</option>
                         {allTemperaments?.map(t => {
                             return (
