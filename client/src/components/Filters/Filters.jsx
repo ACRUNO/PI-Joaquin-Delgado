@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { creationFilter, getAllTemperaments, orderFilter, orderWeightFilter, setCurrentPage, temperamentsFilter } from "../../actions";
+import { creationFilter, getAllTemperaments, orderFilter, orderWeightFilter, setCurrentPage, temperamentsFilter, yearFilter } from "../../actions";
 import './Filter.css';
 
 export default function Filters() {
@@ -42,6 +42,12 @@ export default function Filters() {
         breeds.selectedIndex = 0;
     }   
 
+    const handleClick = e => {
+        e.preventDefault();
+        dispatch(yearFilter(10));
+    }
+
+
     useEffect(() => {
         dispatch(getAllTemperaments())
     }, [dispatch]);
@@ -82,6 +88,9 @@ export default function Filters() {
                             )
                         })}
                     </select>
+                </div>
+                <div>
+                    <button onClick={e => handleClick(e)}>Breed higher than 10 years</button>
                 </div>
             </div>
         </div>

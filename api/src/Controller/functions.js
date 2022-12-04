@@ -14,7 +14,8 @@ const getBreedsApi = async () => {
                 weight_max: parseInt(b.weight.metric.slice(-2).trim()),
                 height_min: parseInt(b.height.metric.slice(0,2).trim()),
                 height_max: parseInt(b.height.metric.slice(-2).trim()),
-                life_span: b.life_span,
+                life_span: parseInt(b.life_span.slice(0,2).trim()),
+                // life_span: b.life_span,
                 temperament: b.temperament?.split(', '),
                 img: b.image.url
             }

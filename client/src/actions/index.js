@@ -11,7 +11,7 @@ export const ORDER_WEIGHT_FILTER = "ORDER_WEIGHT_FILTER";
 export const CREATION_FILTER = "CREATION_FILTER";
 export const GET_ALL_TEMPERAMENTS = "GET_ALL_TEMPERAMENTS";
 export const TEMPERAMENTS_FILTER = "TEMPERAMENTS_FILTER";
-
+export const YEAR_FILTER = "YEAR_FILTER";
 
 
 
@@ -120,6 +120,13 @@ export const creationFilter = value => {
 export const temperamentsFilter = value => {
     return {
         type: TEMPERAMENTS_FILTER,
+        payload: value
+    }
+}
+
+export const yearFilter = value => {
+    return {
+        type: YEAR_FILTER,
         payload: value
     }
 }

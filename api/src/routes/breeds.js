@@ -65,7 +65,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-
+/* 
 router.delete('/:id', async (req, res) => {
     try {
         let { id } = req.params;
@@ -79,7 +79,7 @@ router.delete('/:id', async (req, res) => {
     } catch (error) {
         res.status(404).send(error.message);
     }
-})
+}) */
 
 
 module.exports = router;

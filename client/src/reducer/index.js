@@ -1,4 +1,4 @@
-import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER, CLEAR_BREED_DETAIL } from "../actions/index.js";
+import { GET_ALL_BREEDS, GET_BREED_DETAILS, CREATE_BREED, SET_CURRENT_PAGE, SEARCH_BREED, ORDER_FILTER, ORDER_WEIGHT_FILTER, CREATION_FILTER, GET_ALL_TEMPERAMENTS, TEMPERAMENTS_FILTER, CLEAR_BREED_DETAIL, YEAR_FILTER } from "../actions/index.js";
 
 const initialState = {
     allBreeds: [],
@@ -67,6 +67,12 @@ function rootReducer(state = initialState, action) {
             if (action.payload === "All Temperaments") return {...state, breeds: allTemperamentsBreeds}
             let filteredTemperaments = allTemperamentsBreeds.filter(b => b.temperament?.includes(action.payload));
             return {...state, breeds: filteredTemperaments}
+
+
+        case YEAR_FILTER:
+            let breedsYear = [...state.breeds]
+            let breedsYearFiltered = breedsYear.filter(b => b.life_span > action.payload);
+            return {...state, breeds: breedsYearFiltered}
 
         default: return { ...state }
     }
